@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Authentication Interface</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background: #f0f2f5; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
+        
+        .auth-container { background: #ffffff; width: 100%; max-width: 420px; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); overflow: hidden; }
+        
+
+        .tabs { display: flex; background: #f8f9fa; border-bottom: 1px solid #dee2e6; }
+        .tabs input { display: none; }
+        .tabs label { flex: 1; text-align: center; padding: 15px 10px; font-weight: 600; color: #6c757d; cursor: pointer; transition: all 0.3s ease; font-size: 14px; }
+        .tabs label:hover { color: #007bff; background: #e9ecef; }
+
+
+        .form-section { display: none; padding: 30px; }
+        
+   
+        #tab-login:checked ~ .auth-container-inner #login-form,
+        #tab-register:checked ~ .auth-container-inner #register-form,
+        #tab-recover:checked ~ .auth-container-inner #recover-form { display: block; }
+
+        #tab-login:checked ~ .tabs label[for="tab-login"],
+        #tab-register:checked ~ .tabs label[for="tab-register"],
+        #tab-recover:checked ~ .tabs label[for="tab-recover"] {
+            color: #007bff;
+            background: #ffffff;
+            border-bottom: 3px solid #007bff;
+        }
+
+        h2 { margin-bottom: 20px; color: #333; font-size: 22px; }
+        .input-group { margin-bottom: 18px; }
+        label.input-label { display: block; margin-bottom: 6px; font-size: 13px; font-weight: 600; color: #495057; }
+        
+        input { width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 6px; font-size: 14px; transition: border-color 0.2s, box-shadow 0.2s; }
+        
+  
+        input:focus { outline: none; border-color: #007bff; box-shadow: 0 0 0 3px rgba(0,123,255,0.15); }
+        input:user-invalid { border-color: #dc3545; }
+        input:user-valid { border-color: #28a745; }
+
+        .btn { width: 100%; padding: 12px; background: #007bff; border: none; color: white; font-weight: 600; border-radius: 6px; cursor: pointer; transition: background 0.2s; font-size: 15px; margin-top: 10px; }
+        .btn:hover { background: #0056b3; }
+        
+        .form-footer { text-align: center; margin-top: 15px; font-size: 13px; color: #6c757d; }
+    </style>
+</head>
+<body>
+
+
+    <input type="radio" name="auth-tabs" id="tab-login" checked style="display:none;">
+    <input type="radio" name="auth-tabs" id="tab-register" style="display:none;">
+    <input type="radio" name="auth-tabs" id="tab-recover" style="display:none;">
+
+    <div class="auth-container">
+        <div class="tabs">
+            <label for="tab-login">Login</label>
+            <label for="tab-register">Register</label>
+            <label for="tab-recover">Recovery</label>
+        </div>
+
+        <div class="auth-container-inner">
+     
+            <div id="login-form" class="form-section" style="display: block;">
+                <h2>Welcome Back</h2>
+                <form>
+                    <div class="input-group">
+                        <label class="input-label" for="login-email">Email Address</label>
+                        <input type="email" id="login-email" required placeholder="name@example.com">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label" for="login-password">Password</label>
+                        <input type="password" id="login-password" required placeholder="Enter password">
+                    </div>
+                    <button type="submit" class="btn">Login</button>
+                </form>
+            </div>
+
+            <div id="register-form" class="form-section">
+                <h2>Create Account</h2>
+                <form>
+                    <div class="input-group">
+                        <label class="input-label" for="reg-name">Full Name</label>
+                        <input type="text" id="reg-name" required placeholder="John Doe">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label" for="reg-email">Email Address</label>
+                        <input type="email" id="reg-email" required placeholder="name@example.com">
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label" for="reg-password">Password</label>
+                        <input type="password" id="reg-password" required minlength="8" placeholder="At least 8 characters">
+                    </div>
+                    <button type="submit" class="btn">Register</button>
+                </form>
+            </div>
+
+            <div id="recover-form" class="form-section">
+                <h2>Reset Password</h2>
+                <form>
+                    <div class="input-group">
+                        <label class="input-label" for="rec-email">Enter your registered email</label>
+                        <input type="email" id="rec-email" required placeholder="name@example.com">
+                    </div>
+                    <button type="submit" class="btn">Send Reset Link</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
